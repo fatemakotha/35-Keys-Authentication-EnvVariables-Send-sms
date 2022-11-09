@@ -5,6 +5,13 @@ DHAKA_LAT = "23.810331"
 DHAKA_LNG = "90.412521"
 api_key = "69f04e4613056b159c2761a9d9e664d2" #MY KEY ISN'T WORKING YET SO I USED ANGE'S KEY *******
 
+from twilio.rest import Client
+account_sid = "AC45f747f1f5981d4fd69679b4a7841078"
+auth_token = "5a6281050d9aac4b83245c63111ad1f8"
+client = Client(account_sid, auth_token)
+
+
+
 #For One Call Api plan:
 OpenWeatherMap_Endpoint = "https://api.openweathermap.org/data/2.5/onecall"
 
@@ -41,3 +48,8 @@ for hour_data in weather_slice:
 
 if will_rain:
     print("Bring an umbrella") #if the id is greater than 1 for any of the 12 hours, it will notify to bring umbrella
+    message = client.messages.create(
+        to="+8801685336744",
+        from_="+18317447758",
+        body="Bring an umbrella, it might rain today"
+    )
